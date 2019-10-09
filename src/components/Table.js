@@ -6,21 +6,29 @@ export default class Table extends Component {
     return (
       <div style={{ border: '3px green dotted' }}>
         <h6>Table</h6>
+
         <table border="1px solid black">
+          {/* <thead>
           <tr>
-          <th>head</th>
-          <th>head2</th>
-          <th>head3</th>
+          <th>Number</th>
+          <th>Title</th>
+          <th>Repo status</th>
+          <th>check</th>
+          <th>is private</th>
+          <th>language</th>
+          <th>delete</th>
           </tr>
+          </thead> */}
+          <tbody>
+
      {array.map((item) => {
      return(  
-      <tr key={item.id} > 
-        <td>
-      <Repo key={item.id}  data={item} >item.title</Repo> 
-      </td>
-      </tr>
+      <tr>
+       <Repo>data={item} ></Repo> 
+       </tr>
       )
      })}
+       </tbody>     
      </table>
       </div>
     );
