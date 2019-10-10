@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 
 export default class Repo extends Component {
-  state = {
-    isChecked : true
-  }
+  // state = {
+  //   isChecked : true
+  // }
   deleteHandler =(id)=>{
-    // console.log(id);
     this.props.id(id)
   }
+  checkHandler = (id)=>{
+    this.props.check(id)
+  }
+
   render() {
     const {data} = this.props
-    const {deleteHandler} = this
+    const {deleteHandler,checkHandler} = this
     return (
-      <>
       <tr>    
       <td>
       {data.id}
@@ -21,20 +23,23 @@ export default class Repo extends Component {
          {data.title}
        </td>
        <td>
-         {data.status}
+         {data.status.toUpperCase()}
+       </td>
+       <td>
+        {/* <label>check</label>asdasdasdsa */}
+      <input type="checkbox" checked={data.status=== 'Private'? true : false } onChange={checkHandler.bind(this,data.id)} ></input>
+       </td>
+       <td>
+         {data.status==='Private'? "yes" : "no"}
        </td>
        <td>
          {data.language}
        </td>
        <td>
-        <label>check</label>
-      <input type="checkbox" checked={this.state.isChecked? "checked" : ""} ></input>
-       </td>
-       <td>
       <button style={{backgroundColor:'Red'}} onClick={deleteHandler.bind(this,data.id)}>X</button>
       </td>
       </tr>
-      </>
+   
     );
   }
 }

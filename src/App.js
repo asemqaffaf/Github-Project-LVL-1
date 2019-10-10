@@ -21,12 +21,33 @@ export default class App extends Component {
   };
   deleteHandler =(id)=>{
     console.log(id);
+ 
     const newArray = this.state.repos.filter((item,i)=>{
     return   item.id !== id
     })
     this.setState({
       repos : newArray
     })
+  }
+  checkHandler = (id)=>{
+    console.log(id);
+     this.state.repos.map((item,i)=>{
+      if (item.id === id){
+          // item.status = !item.status
+          if(item.status === "Public" ){
+            item.status = "Private"
+          }
+          else{
+            item.status = "Public"
+          }
+      }
+      return item;
+    }
+    )
+    this.setState({
+      repos : this.state.repos
+    })
+    console.log(this.state.repos);
   }
   addHandler = (item)=>{
     this.state.repos.push(item)
@@ -41,7 +62,7 @@ export default class App extends Component {
       <div style={{ border: 'black 1px solid' }}>
         <h6>App</h6>
         <Add add={this.addHandler} array={repos} ></Add>
-        <Table array={repos} delete={deleteHandler}  ></Table>
+        <Table array={repos} delete={deleteHandler} check={this.checkHandler}  ></Table>
       </div>
     );
   }
