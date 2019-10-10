@@ -30,7 +30,6 @@ export default class App extends Component {
     })
   }
   checkHandler = (id)=>{
-    console.log(id);
      this.state.repos.map((item,i)=>{
       if (item.id === id){
           // item.status = !item.status
@@ -47,7 +46,6 @@ export default class App extends Component {
     this.setState({
       repos : this.state.repos
     })
-    console.log(this.state.repos);
   }
   addHandler = (item)=>{
     this.state.repos.push(item)

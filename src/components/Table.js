@@ -6,7 +6,6 @@ export default class Table extends Component {
    this.props.delete(id)
   }
   checkHandler = (id) =>{
-    // console.log(id);
     this.props.check(id)
   }
   render() {

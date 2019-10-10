@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 export default class Add extends Component {
 
   state = {
-    title: "",
-    repoLang : "",
-    status : ""
+    title: null,
+    repoLang : null,
+    status : null
   }
   
   onChangeHandler = (event)=>{
@@ -31,7 +31,9 @@ this.setState({
       status : newStatus,
       language : repoLang,
     }
+    if(this.state.title != null && this.state.repoLang!= null&& this.state.status!= null){
 this.props.add(newObject)
+    }
   }
 
   selectElement =(event)=>{
