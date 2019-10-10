@@ -8,26 +8,19 @@ export default class Add extends Component {
     status : ""
   }
   
-  onChangeHandlerTitle = (event)=>{
+  onChangeHandler = (event)=>{
 this.setState({
-  title : event.target.value
+  [event.target.name] : event.target.value
 })
   }
-  onChangeHandlerRepo = (event)=>{
-    this.setState({
-      repoLang : event.target.value.id
-    })
-  }
-    // {
-  //   id: 1,
-  //   title: 'Array',
-  //   status: 'Private',
-  //   language: 'HTML'
-  // },
-
   addTitle=()=>{
-  const newId = this.props.array[this.props.array.length-1].id+1
-
+    let newId = 1
+    try{
+   newId = this.props.array[this.props.array.length-1].id+1
+    }
+    catch{
+       newId = 1
+    }
   const newTitle = this.state.title
   const repoLang = this.state.repoLang
   const newStatus = this.state.status
@@ -38,21 +31,20 @@ this.setState({
       status : newStatus,
       language : repoLang,
     }
-
 this.props.add(newObject)
   }
+
   selectElement =(event)=>{
     this.setState({
       status : event.target.value
     })
-    // console.log(event.target.value);
   }
   render() {
     return (
       <div style={{ border: '3px orange solid' }}>
         <h6>Add</h6>
-        <input placeholder="title language"  onChange={this.onChangeHandlerTitle}></input>
-        <input placeholder="repo language" onChange={this.onChangeHandlerRepo}></input>
+        <input placeholder="title language" name="title"  onChange={this.onChangeHandler}></input>
+        <input placeholder="repo language" name="repoLang" onChange={this.onChangeHandler}></input>
 
         <select onChange={this.selectElement}>
         <option  hidden>Repo state (Private/Public)</option>

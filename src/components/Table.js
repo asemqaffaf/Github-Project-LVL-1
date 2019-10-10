@@ -25,15 +25,13 @@ export default class Table extends Component {
           <td>delete</td>
           </th>
  
-          <tr> 
+          
      {array.map((item) => {
      return(  
-      <tr>  
-       <Repo key={item.id} data={item} id={identifie} ></Repo> 
-       </tr>
+      <Repo key={item.id} data={item} id={identifie} ></Repo> 
       ) 
      })}
-      </tr> 
+      
      </table>
       </div>
     );

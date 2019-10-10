@@ -12,8 +12,8 @@ export default class Repo extends Component {
     const {data} = this.props
     const {deleteHandler} = this
     return (
-      <tr style={{ border: '3px red solid' }}>    
-
+      <>
+      <tr>    
       <td>
       {data.id}
       </td>
@@ -34,6 +34,7 @@ export default class Repo extends Component {
       <button style={{backgroundColor:'Red'}} onClick={deleteHandler.bind(this,data.id)}>X</button>
       </td>
       </tr>
+      </>
     );
   }
 }
