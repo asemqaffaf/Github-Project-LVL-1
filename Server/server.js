@@ -12,9 +12,9 @@ app.get('/getAll',(req,res)=>{
 })
 app.post('/Post', (req,res)=>{
     if(req.body === null){
-        res.json(db)
+        res.json("bad request")
     }
-else if(req.body.title != null && req.body.status != null &&req.body.language != null ){
+else if(req.body.title != undefined && req.body.status != undefined &&req.body.language != undefined ){
 const newDb = {
     id : ++lengthOfDB,
     title : req.body.title,
@@ -22,8 +22,9 @@ const newDb = {
     language : req.body.language
 }
  db.push(newDb) 
+  res.json(db)
 }
-res.json(db)
+res.json("bad request")
 })
 
 app.get('/delete/:ID',(req,res)=>{
